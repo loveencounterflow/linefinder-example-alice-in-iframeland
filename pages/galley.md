@@ -87,7 +87,7 @@ or Australia?” (and she tried to curtsey as she spoke—fancy
 <i>curtseying</i> as you’re falling through the air! Do you think you
 could manage it?) “And what an ignorant little girl she’ll think me
 for asking! No, it’ll never do to ask: perhaps I shall see it written up
-somewhere.”
+some&shy;where.”
 </p></mu-galley>
 
 
