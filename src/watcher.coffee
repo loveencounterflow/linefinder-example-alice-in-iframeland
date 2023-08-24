@@ -39,7 +39,6 @@ file_dt                   = 0.2 # seconds to sleep between file actions
 G                         = {}
 do ->
   G.project_path  = PATH.dirname __dirname
-  G.tmp_path      = PATH.join G.project_path, 'tmp'
   G.public_path   = PATH.join G.project_path, 'public'
 
 
@@ -73,43 +72,44 @@ xxx =
     { $: zx }       = await import( 'zx' )
     source_path     = d.path
     public_filename = "#{d.barename}.html"
-    tmp_path        = PATH.join G.tmp_path,     public_filename
     public_path     = PATH.join G.public_path,  public_filename
     help GUY.datetime.now(), '^$html_from_md@858-1^', GUY.trm.reverse " #{d.filename} -> #{public_filename} "
     #.......................................................................................................
-    ### TAINT rewrite by using functions that call `zx`, catch errors, wait ###
-    try
-      await zx"""pandoc -o #{tmp_path} #{source_path}"""
-    catch error
-      message = error.message ? error
-      warn '^$html_from_md@858-2^', GUY.trm.reverse " #{message} "
-    debug '^345-1^', "###################################"
-    xxx_count = 0
-    loop
-      xxx_count++
-      break if xxx_count > 100 ### TAINT display error ###
-      file_exists = FS.existsSync tmp_path
-      debug '^345-11^', file_exists
-      break if file_exists
+    GUY.temp.with_directory ({ path: tmp_dir_path }) ->
+      tmp_path        = PATH.join tmp_dir_path,     public_filename
+      ### TAINT rewrite by using functions that call `zx`, catch errors, wait ###
+      try
+        await zx"""pandoc -o #{tmp_path} #{source_path}"""
+      catch error
+        message = error.message ? error
+        warn '^$html_from_md@858-2^', GUY.trm.reverse " #{message} "
+      debug '^345-1^', "###################################"
+      xxx_count = 0
+      loop
+        xxx_count++
+        break if xxx_count > 100 ### TAINT display error ###
+        file_exists = FS.existsSync tmp_path
+        debug '^345-11^', file_exists
+        break if file_exists
+        await sleep file_dt
+      #.......................................................................................................
+      try
+        await zx"""echo '<!DOCTYPE html>' | cat - #{tmp_path} > #{public_path}"""
+      catch error
+        message = error.message ? error
+        warn '^$html_from_md@858-3^', GUY.trm.reverse " #{message} "
+      debug '^345-3^', "###################################"
       await sleep file_dt
-    #.......................................................................................................
-    try
-      await zx"""echo '<!DOCTYPE html>' | cat - #{tmp_path} > #{public_path}"""
-    catch error
-      message = error.message ? error
-      warn '^$html_from_md@858-3^', GUY.trm.reverse " #{message} "
-    debug '^345-3^', "###################################"
-    await sleep file_dt
-    debug '^345-4^', FS.existsSync public_path
-    #.......................................................................................................
-    ### TAINT use GUY temp file ###
-    try
-      await zx"""trash #{tmp_path}"""
-    catch error
-      message = error.message ? error
-      warn '^$html_from_md@858-4^', GUY.trm.reverse " #{message} "
-    debug '^345-5^', "###################################"
-    await sleep file_dt
+      debug '^345-4^', FS.existsSync public_path
+      #.......................................................................................................
+      ### TAINT use GUY temp file ###
+      try
+        await zx"""trash #{tmp_path}"""
+      catch error
+        message = error.message ? error
+        warn '^$html_from_md@858-4^', GUY.trm.reverse " #{message} "
+      debug '^345-5^', "###################################"
+      await sleep file_dt
     #.......................................................................................................
     info GUY.datetime.now(), '^$html_from_md@858-5^', GUY.trm.reverse " OK #{d.filename} -> #{public_filename} "
       # date +"%Y-%m-%d %H:%M:%S"
