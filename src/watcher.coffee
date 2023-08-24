@@ -72,7 +72,7 @@ xxx =
     source_path     = d.path
     public_filename = "#{d.barename}.html"
     public_path     = PATH.join G.public_path,  public_filename
-    help GUY.datetime.now(), '^$html_from_md@858-1^', GUY.trm.reverse " #{d.filename} -> #{public_filename} "
+    help GUY.datetime.now(), '^$html_from_md@345-2^', GUY.trm.reverse " #{d.filename} -> #{public_filename} "
     #.......................................................................................................
     GUY.temp.with_directory { prefix: 'lfxaiif', }, ({ path: tmp_dir_path }) ->
       tmp_path        = PATH.join tmp_dir_path,     public_filename
@@ -81,17 +81,16 @@ xxx =
         await zx"""pandoc -o #{tmp_path} #{source_path}"""
       catch error
         message = error.message ? error
-        warn '^$html_from_md@858-2^', GUY.trm.reverse " #{message} "
-      xxx_count = 0
+        warn '^$html_from_md@345-3^', GUY.trm.reverse " #{message} "
       #.......................................................................................................
       try
         await zx"""echo '<!DOCTYPE html>' | cat - #{tmp_path} > #{public_path}"""
       catch error
         message = error.message ? error
-        warn '^$html_from_md@858-3^', GUY.trm.reverse " #{message} "
+        warn '^$html_from_md@345-4^', GUY.trm.reverse " #{message} "
       await sleep file_dt
     #.......................................................................................................
-    info GUY.datetime.now(), '^$html_from_md@858-5^', GUY.trm.reverse " OK #{d.filename} -> #{public_filename} "
+    info GUY.datetime.now(), '^$html_from_md@345-5^', GUY.trm.reverse " OK #{d.filename} -> #{public_filename} "
       # date +"%Y-%m-%d %H:%M:%S"
     #.......................................................................................................
     return null
