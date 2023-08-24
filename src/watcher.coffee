@@ -130,6 +130,7 @@ class My_watcher extends GUY.watch.Watcher
 
 #-----------------------------------------------------------------------------------------------------------
 demo = -> new Promise ( resolve, reject ) =>
+  mode = if ( process.argv.at -1 ) is 'dev' then 'dev' else 'prod'
   FiveServer = ( require 'five-server' ).default
   cfg =
     open:           false
@@ -146,6 +147,14 @@ demo = -> new Promise ( resolve, reject ) =>
   watcher.add_path PATH.join G.project_path, 'public/**/*.css'
   watcher.add_path PATH.join G.project_path, 'public/**/*.js'
   watcher.add_path PATH.join G.project_path, 'public/**/*.html'
+  if mode is 'dev'
+    warn GUY.trm.reverse '^demo@345-1^', "running in dev mode"
+    debug PATH.join G.project_path, 'node_modules/mudom/lib/*.js'
+    debug PATH.join G.project_path, 'node_modules/linefinder/lib/*.js'
+    watcher.add_path PATH.resolve PATH.join G.project_path, 'node_modules/mudom/lib/*.js'
+    watcher.add_path PATH.resolve PATH.join G.project_path, 'node_modules/linefinder/lib/*.js'
+  else
+    help GUY.trm.reverse '^demo@345-1^', "running in prod mode"
   server.start cfg
   server.reloadBrowserWindow()
   return resolve()
