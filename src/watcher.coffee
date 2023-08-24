@@ -46,7 +46,7 @@ do ->
 xxx =
 
   #---------------------------------------------------------------------------------------------------------
-  $log_all: -> ( d ) => whisper GUY.datetime.now(), '^858-4^', 'pipeline', d
+  $log_all: -> ( d ) => whisper GUY.datetime.now(), '^345-1^', 'pipeline', d
 
   #---------------------------------------------------------------------------------------------------------
   $add_as_change: -> ( d, send ) =>
@@ -75,7 +75,7 @@ xxx =
     public_path     = PATH.join G.public_path,  public_filename
     help GUY.datetime.now(), '^$html_from_md@858-1^', GUY.trm.reverse " #{d.filename} -> #{public_filename} "
     #.......................................................................................................
-    GUY.temp.with_directory ({ path: tmp_dir_path }) ->
+    GUY.temp.with_directory { prefix: 'lfxaiif', }, ({ path: tmp_dir_path }) ->
       tmp_path        = PATH.join tmp_dir_path,     public_filename
       ### TAINT rewrite by using functions that call `zx`, catch errors, wait ###
       try
@@ -105,7 +105,7 @@ xxx =
 #===========================================================================================================
 create_pipeline = ( server ) ->
   pipeline        = new Async_pipeline()
-  # pipeline.push ( d ) -> warn GUY.datetime.now(), '^858-4^', 'pipeline', d
+  # pipeline.push ( d ) -> warn GUY.datetime.now(), '^345-2^', 'pipeline', d
   pipeline.push xxx.$log_all()
   pipeline.push xxx.$add_as_change()
   pipeline.push xxx.$add_file_info()
@@ -114,21 +114,32 @@ create_pipeline = ( server ) ->
   pipeline.push xxx.$reload server
   return pipeline
 
-
+xxx_count = 0
 #===========================================================================================================
 class My_watcher extends GUY.watch.Watcher
 
   #---------------------------------------------------------------------------------------------------------
   constructor: ( pipeline ) ->
     super { ignored: /(^|\/)\..|node_modules/, }
+    ### TAINT do in super class ###
+    @_watcher.on 'all', ( ( path, stats   ) => await @on_all            path  )
     @pipeline = pipeline
+    @state    = { active: false, }
     return undefined
 
   #---------------------------------------------------------------------------------------------------------
   on_all: ( key, path ) ->
-    # whisper GUY.datetime.now(), '^858-1^', 'my_watcher', key, path
-    @pipeline.send { key, path, }
-    null for await d from @pipeline.walk()
+    xxx_count++
+    debug '^345-3^', xxx_count, 'vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv'
+    unless @state.active
+      @state.active = true
+      whisper GUY.datetime.now(), '^345-4^', GUY.trm.reverse 'my_watcher', key, path
+      @pipeline.send { key, path, }
+      null for await d from @pipeline.walk()
+      @state.active = false
+    else
+      warn '^345-5^', "active"
+    debug '^345-6^', xxx_count, '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'
     return null
 
 #-----------------------------------------------------------------------------------------------------------
