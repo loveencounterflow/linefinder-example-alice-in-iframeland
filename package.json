@@ -9,23 +9,20 @@
   },
   "scripts": {
     "serve": "nodexh lib/watcher.js",
+    "serve-dev": "nodexh lib/watcher.js -- dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chokidar": "^3.5.3",
-    "chrome-a11y-caret-browsing-extension": "^1.0.2",
     "five-server": "^0.3.1",
     "guy": "^13.7.1",
-    "hyphenation.en-us": "^0.2.1",
-    "hyphenopoly": "5.2.0-beta.1",
-    "hypher": "^0.2.5",
     "intertype": "~0.119.1",
+    "linefinder": "^1.0.11",
     "moonriver": "^4.8.2",
+    "mudom": "^1.0.10",
     "nodexh": "^2.2.0",
-    "unjustifiable": "^1.1.2",
     "zx": "^7.2.2"
   }
 }

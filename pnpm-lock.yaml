@@ -5,39 +5,27 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  chokidar:
-    specifier: ^3.5.3
-    version: 3.5.3
-  chrome-a11y-caret-browsing-extension:
-    specifier: ^1.0.2
-    version: 1.0.2
   five-server:
     specifier: ^0.3.1
     version: 0.3.1
   guy:
     specifier: ^13.7.1
     version: 13.7.1(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(chokidar@3.5.3)(dayjs@1.11.9)(tmp@0.2.1)
-  hyphenation.en-us:
-    specifier: ^0.2.1
-    version: 0.2.1
-  hyphenopoly:
-    specifier: 5.2.0-beta.1
-    version: 5.2.0-beta.1
-  hypher:
-    specifier: ^0.2.5
-    version: 0.2.5
   intertype:
     specifier: ~0.119.1
     version: 0.119.1(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(tmp@0.2.1)
+  linefinder:
+    specifier: ^1.0.11
+    version: link:../linefinder
   moonriver:
     specifier: ^4.8.2
     version: 4.8.2(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(dayjs@1.11.9)(tmp@0.2.1)
+  mudom:
+    specifier: ^1.0.10
+    version: 1.0.10
   nodexh:
     specifier: ^2.2.0
     version: 2.2.0(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(dayjs@1.11.9)(tmp@0.2.1)
-  unjustifiable:
-    specifier: ^1.1.2
-    version: 1.1.2
   zx:
     specifier: ^7.2.2
     version: 7.2.2
@@ -989,21 +977,6 @@ packages:
       toidentifier: 1.0.1
     dev: false
 
-  /hyphenation.en-us@0.2.1:
-    resolution: {integrity: sha512-ItXYgvIpfN8rfXl/GTBQC7DsSb5PPsKh9gGzViK/iWzCS5mvjDebFJ6xCcIYo8dal+nSp2rUzvTT7BosrKlL8A==}
-    dependencies:
-      hypher: 0.2.5
-    dev: false
-
-  /hyphenopoly@5.2.0-beta.1:
-    resolution: {integrity: sha512-HnEaKUjxINWig92QbN9zU7SqXcxuyIhgp/QJcsKKPwLwFg+exW6zs37oO7ZOvtBODQwUSlpFwwJgZfbi9su8qQ==}
-    engines: {node: '>=14'}
-    dev: false
-
-  /hypher@0.2.5:
-    resolution: {integrity: sha512-kUTpuyzBWWDO2VakmjHC/cxesg4lKQP+Fdc+7lrK4yvjNjkV9vm5UTZMDAwOyyHTOpbkYrAMlNZHG61NnE9vYQ==}
-    dev: false
-
   /ignore@5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
@@ -1306,6 +1279,13 @@ packages:
 
   /ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
+    dev: false
+
+  /mudom@1.0.10:
+    resolution: {integrity: sha512-IZ1cytrG5Xgij1c+sXVZ6pAV7aDucr1MqQD/Q9sdP0zKQgj8710Gn2Xqmi/1BY845qsohQ+dV/q/nDz/Tq9xng==}
+    dependencies:
+      chrome-a11y-caret-browsing-extension: 1.0.2
+      intertype: 7.6.5
     dev: false
 
   /multimix@5.0.0:
@@ -1772,10 +1752,6 @@ packages:
   /universalify@2.0.0:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
     engines: {node: '>= 10.0.0'}
-    dev: false
-
-  /unjustifiable@1.1.2:
-    resolution: {integrity: sha512-NUqlxSRMQtshjTHJdYVAEb/P77XTJJx5Kw8hYiERXM9+werQs50LhupTR9CpPuzi/U875ar2lTKg5Y7x3g+lLg==}
     dev: false
 
   /unpipe@1.0.0:
