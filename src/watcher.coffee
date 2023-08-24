@@ -117,8 +117,7 @@ xxx =
     return null
 
   #---------------------------------------------------------------------------------------------------------
-  $reload: ( server ) -> ( d, send ) =>
-    send d
+  $reload: ( server ) -> ( d ) =>
     server.reloadBrowserWindow()
     return null
 
