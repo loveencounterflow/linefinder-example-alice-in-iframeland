@@ -26,6 +26,26 @@
 <pl-frameholder><iframe src='./galley.html'></iframe></pl-frameholder>
 </pl-page>
 
+<pl-page>
+<pl-frameholder><iframe src='./galley.html'></iframe></pl-frameholder>
+<pl-frameholder><iframe src='./galley.html'></iframe></pl-frameholder>
+</pl-page>
+
+<pl-page>
+<pl-frameholder><iframe src='./galley.html'></iframe></pl-frameholder>
+<pl-frameholder><iframe src='./galley.html'></iframe></pl-frameholder>
+</pl-page>
+
+<pl-page>
+<pl-frameholder><iframe src='./galley.html'></iframe></pl-frameholder>
+<pl-frameholder><iframe src='./galley.html'></iframe></pl-frameholder>
+</pl-page>
+
+<pl-page>
+<pl-frameholder><iframe src='./galley.html'></iframe></pl-frameholder>
+<pl-frameholder><iframe src='./galley.html'></iframe></pl-frameholder>
+</pl-page>
+
 <script src='/browserified/mudom+linefinder.js'></script>
 <script src='./ops2.js'></script>
 
