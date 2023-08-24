@@ -103,41 +103,29 @@ xxx =
 #===========================================================================================================
 create_pipeline = ( server ) ->
   pipeline        = new Async_pipeline()
-  # pipeline.push ( d ) -> warn GUY.datetime.now(), '^345-2^', 'pipeline', d
   pipeline.push xxx.$log_all()
   pipeline.push xxx.$add_as_change()
   pipeline.push xxx.$add_file_info()
-  # pipeline.push xxx.$log_all()
   pipeline.push xxx.$html_from_md()
   pipeline.push xxx.$reload server
   return pipeline
 
-xxx_count = 0
+
 #===========================================================================================================
 class My_watcher extends GUY.watch.Watcher
 
   #---------------------------------------------------------------------------------------------------------
   constructor: ( pipeline ) ->
     super { ignored: /(^|\/)\..|node_modules/, }
-    ### TAINT do in super class ###
-    @_watcher.on 'all', ( ( path, stats   ) => await @on_all            path  )
     @pipeline = pipeline
-    @state    = { active: false, }
     return undefined
 
   #---------------------------------------------------------------------------------------------------------
-  on_all: ( key, path ) ->
-    xxx_count++
-    debug '^345-3^', xxx_count, 'vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv'
-    unless @state.active
-      @state.active = true
-      whisper GUY.datetime.now(), '^345-4^', GUY.trm.reverse 'my_watcher', key, path
-      @pipeline.send { key, path, }
-      null for await d from @pipeline.walk()
-      @state.active = false
-    else
-      warn '^345-5^', "active"
-    debug '^345-6^', xxx_count, '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'
+  on_all: ( key, path = null ) ->
+    return null unless path?
+    whisper GUY.datetime.now(), '^345-7^', GUY.trm.reverse 'my_watcher', key, path
+    @pipeline.send { key, path, }
+    null for await d from @pipeline.walk()
     return null
 
 #-----------------------------------------------------------------------------------------------------------
