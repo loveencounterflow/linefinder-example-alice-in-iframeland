@@ -83,32 +83,13 @@ xxx =
       catch error
         message = error.message ? error
         warn '^$html_from_md@858-2^', GUY.trm.reverse " #{message} "
-      debug '^345-1^', "###################################"
       xxx_count = 0
-      loop
-        xxx_count++
-        break if xxx_count > 100 ### TAINT display error ###
-        file_exists = FS.existsSync tmp_path
-        debug '^345-11^', file_exists
-        break if file_exists
-        await sleep file_dt
       #.......................................................................................................
       try
         await zx"""echo '<!DOCTYPE html>' | cat - #{tmp_path} > #{public_path}"""
       catch error
         message = error.message ? error
         warn '^$html_from_md@858-3^', GUY.trm.reverse " #{message} "
-      debug '^345-3^', "###################################"
-      await sleep file_dt
-      debug '^345-4^', FS.existsSync public_path
-      #.......................................................................................................
-      ### TAINT use GUY temp file ###
-      try
-        await zx"""trash #{tmp_path}"""
-      catch error
-        message = error.message ? error
-        warn '^$html_from_md@858-4^', GUY.trm.reverse " #{message} "
-      debug '^345-5^', "###################################"
       await sleep file_dt
     #.......................................................................................................
     info GUY.datetime.now(), '^$html_from_md@858-5^', GUY.trm.reverse " OK #{d.filename} -> #{public_filename} "
@@ -172,16 +153,6 @@ demo = -> new Promise ( resolve, reject ) =>
   server.reloadBrowserWindow()
   return resolve()
 
-# demo = -> new Promise ( resolve, reject ) =>
-#   debug '^345-6^', "###################################"
-#   await sleep file_dt
-#   debug '^345-7^', "###################################"
-#   await sleep file_dt
-#   debug '^345-8^', "###################################"
-#   await sleep file_dt
-#   debug '^345-9^', "###################################"
-#   await sleep file_dt
-#   resolve()
 
 ############################################################################################################
 if require.main is module then do =>
