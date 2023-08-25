@@ -64,36 +64,50 @@ xxx =
     send d
 
   #---------------------------------------------------------------------------------------------------------
-  $html_from_md: -> ( d, send ) =>
-    return send d unless d.key is 'change'
-    return send d unless d.extension is '.md'
-    #.......................................................................................................
-    { $: zx }       = await import( 'zx' )
-    source_path     = d.path
-    public_filename = "#{d.barename}.html"
-    public_path     = PATH.join G.public_path,  public_filename
-    help GUY.datetime.now(), '^$html_from_md@345-2^', GUY.trm.reverse " #{d.filename} -> #{public_filename} "
-    #.......................................................................................................
-    GUY.temp.with_directory { prefix: 'lfxaiif', }, ({ path: tmp_dir_path }) ->
-      tmp_path        = PATH.join tmp_dir_path,     public_filename
+  $browserify_mudom_etc: ->
+    { $: zx } = await import( 'zx' )
+    return ( d ) =>
+      return null unless /\/node_modules\/linefinder\/lib\//.test d.path
       ### TAINT rewrite by using functions that call `zx`, catch errors, wait ###
       try
-        await zx"""pandoc -o #{tmp_path} #{source_path}"""
+        await zx"""bin/run-browserify"""
       catch error
         message = error.message ? error
-        warn '^$html_from_md@345-3^', GUY.trm.reverse " #{message} "
-      #.......................................................................................................
-      try
-        await zx"""echo '<!DOCTYPE html>' | cat - #{tmp_path} > #{public_path}"""
-      catch error
-        message = error.message ? error
-        warn '^$html_from_md@345-4^', GUY.trm.reverse " #{message} "
-      await sleep file_dt
-    #.......................................................................................................
-    info GUY.datetime.now(), '^$html_from_md@345-5^', GUY.trm.reverse " OK #{d.filename} -> #{public_filename} "
-      # date +"%Y-%m-%d %H:%M:%S"
-    #.......................................................................................................
-    return null
+        warn '^$browserify_mudom_etc@345-3^', GUY.trm.reverse " #{message} "
+      return null
+
+  #---------------------------------------------------------------------------------------------------------
+  $html_from_md: ->
+    { $: zx } = await import( 'zx' )
+    return ( d, send ) =>
+      return send d unless d.key is 'change'
+      return send d unless d.extension is '.md'
+      #.....................................................................................................
+      source_path     = d.path
+      public_filename = "#{d.barename}.html"
+      public_path     = PATH.join G.public_path,  public_filename
+      help GUY.datetime.now(), '^$html_from_md@345-2^', GUY.trm.reverse " #{d.filename} -> #{public_filename} "
+      #.....................................................................................................
+      GUY.temp.with_directory { prefix: 'lfxaiif', }, ({ path: tmp_dir_path }) ->
+        tmp_path        = PATH.join tmp_dir_path,     public_filename
+        ### TAINT rewrite by using functions that call `zx`, catch errors, wait ###
+        try
+          await zx"""pandoc -o #{tmp_path} #{source_path}"""
+        catch error
+          message = error.message ? error
+          warn '^$html_from_md@345-3^', GUY.trm.reverse " #{message} "
+        #...................................................................................................
+        try
+          await zx"""echo '<!DOCTYPE html>' | cat - #{tmp_path} > #{public_path}"""
+        catch error
+          message = error.message ? error
+          warn '^$html_from_md@345-4^', GUY.trm.reverse " #{message} "
+        await sleep file_dt
+      #.....................................................................................................
+      info GUY.datetime.now(), '^$html_from_md@345-5^', GUY.trm.reverse " OK #{d.filename} -> #{public_filename} "
+        # date +"%Y-%m-%d %H:%M:%S"
+      #.....................................................................................................
+      return null
 
   #---------------------------------------------------------------------------------------------------------
   $reload: ( server ) -> ( d ) =>
@@ -103,11 +117,12 @@ xxx =
 #===========================================================================================================
 create_pipeline = ( server ) ->
   pipeline        = new Async_pipeline()
-  pipeline.push xxx.$log_all()
-  pipeline.push xxx.$add_as_change()
-  pipeline.push xxx.$add_file_info()
-  pipeline.push xxx.$html_from_md()
-  pipeline.push xxx.$reload server
+  pipeline.push await xxx.$log_all()
+  pipeline.push await xxx.$add_as_change()
+  pipeline.push await xxx.$add_file_info()
+  pipeline.push await xxx.$browserify_mudom_etc()
+  pipeline.push await xxx.$html_from_md()
+  pipeline.push await xxx.$reload server
   return pipeline
 
 
@@ -140,7 +155,7 @@ demo = -> new Promise ( resolve, reject ) =>
     https:          true
     wait:           1000 # ms
   server      = new FiveServer()
-  pipeline    = create_pipeline server
+  pipeline    = await create_pipeline server
   watcher     = new My_watcher pipeline
   watcher.add_path PATH.join G.project_path, 'pages/**/*.md'
   watcher.add_path PATH.join G.project_path, 'public/**/*.css'
