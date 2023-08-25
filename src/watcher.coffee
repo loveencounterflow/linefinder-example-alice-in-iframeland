@@ -116,7 +116,7 @@ class My_watcher extends GUY.watch.Watcher
 
   #---------------------------------------------------------------------------------------------------------
   constructor: ( pipeline ) ->
-    super { ignored: /(^|\/)\..|node_modules/, }
+    super() # { ignored: /(^|\/)\..|node_modules/, }
     @pipeline = pipeline
     return undefined
 
