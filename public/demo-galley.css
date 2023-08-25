@@ -96,6 +96,15 @@ mu-rightcomb {
   width:                  80mm;
   outline:                1px dotted blue; }
 
+pl-title {
+  display:                block;
+  font-size:              200%;
+  color:                  grey;
+  lineheight:             200%;
+  margin-top:             calc( var(--grid-size) * 5 );
+  width:                  var(--column-width);
+  text-align:             center; }
+
 mu-galley {
   display:                block;
   position:               relative;
