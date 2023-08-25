@@ -139,7 +139,6 @@ demo = -> new Promise ( resolve, reject ) =>
     ignore:         /.*/
     https:          true
     wait:           1000 # ms
-  # debug '^43457640^', k for k from GUY.props.walk_keys ( new FiveServer()), { hidden: true, }
   server      = new FiveServer()
   pipeline    = create_pipeline server
   watcher     = new My_watcher pipeline
@@ -149,8 +148,6 @@ demo = -> new Promise ( resolve, reject ) =>
   watcher.add_path PATH.join G.project_path, 'public/**/*.html'
   if mode is 'dev'
     warn GUY.trm.reverse '^demo@345-1^', "running in dev mode"
-    debug PATH.join G.project_path, 'node_modules/mudom/lib/*.js'
-    debug PATH.join G.project_path, 'node_modules/linefinder/lib/*.js'
     watcher.add_path PATH.resolve PATH.join G.project_path, 'node_modules/mudom/lib/*.js'
     watcher.add_path PATH.resolve PATH.join G.project_path, 'node_modules/linefinder/lib/*.js'
   else
