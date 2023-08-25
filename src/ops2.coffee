@@ -38,7 +38,7 @@ LINE                      = require 'linefinder'
   return null unless  LINE.Distributor.is_main_document()
   #.........................................................................................................
   distributor = new LINE.Distributor cfg
-  await distributor.distribute_lines()
+  # await distributor.distribute_lines()
   return null
 
 
