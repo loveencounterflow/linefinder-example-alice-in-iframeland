@@ -35,6 +35,7 @@ FS                        = require 'fs'
   defer
   sleep }                 = GUY.async
 file_dt                   = 0.2 # seconds to sleep between file actions
+{ Intersock }             = require 'intersock'
 #...........................................................................................................
 G                         = {}
 do ->
@@ -67,7 +68,7 @@ xxx =
   $browserify_mudom_etc: ->
     { $: zx } = await import( 'zx' )
     return ( d ) =>
-      return null unless /\/node_modules\/linefinder\/lib\//.test d.path
+      return null unless /\/node_modules\/(linefinder|mudom|intersock|webguy)\/lib\//.test d.path
       ### TAINT rewrite by using functions that call `zx`, catch errors, wait ###
       try
         await zx"""bin/run-browserify"""
@@ -165,11 +166,32 @@ demo = -> new Promise ( resolve, reject ) =>
     warn GUY.trm.reverse '^demo@345-1^', "running in dev mode"
     watcher.add_path PATH.resolve PATH.join G.project_path, 'node_modules/mudom/lib/*.js'
     watcher.add_path PATH.resolve PATH.join G.project_path, 'node_modules/linefinder/lib/*.js'
+    watcher.add_path PATH.resolve PATH.join G.project_path, 'node_modules/intersock/lib/*.js'
+    watcher.add_path PATH.resolve PATH.join G.project_path, 'node_modules/webguy/lib/*.js' ### TAINT should be included per intersock ###
   else
     help GUY.trm.reverse '^demo@345-1^', "running in prod mode"
   server.start cfg
+  # debug '^2344^', server
+  # debug '^2344^', server.httpServer # k for k in GUY.props.keys server, { hidden: true, }
+  # debug '^2344^', k for k in GUY.props.keys server, { hidden: true, }
+  intersock   = new Intersock server.httpServer
+  debug '^2394789^', intersock
+  # demo_websocket '127.0.0.1', 5500
   server.reloadBrowserWindow()
   return resolve()
+
+demo_websocket = ( host, port ) =>
+  url     = "ws://#{host}:#{port}/ws"
+  WS      = require 'ws'
+  ws      = new WS.WebSocket url
+  urge "^demo_websocket@14^ opening websocket at #{url}"
+  ws.on 'open', () =>
+    urge "^demo_websocket@17^ websocket open at #{url}"
+    ws.send 'echo "helo from server"'
+  ws.on 'message', ( data ) =>
+    urge "^demo_websocket@17^ message", rpr data
+    return null
+  return null
 
 
 ############################################################################################################
