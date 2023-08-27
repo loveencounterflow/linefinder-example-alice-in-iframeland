@@ -21,8 +21,8 @@ dependencies:
     specifier: ^1.0.11
     version: link:../linefinder
   moonriver:
-    specifier: ^4.8.3
-    version: 4.8.3(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(chokidar@3.5.3)(dayjs@1.11.9)(tmp@0.2.1)
+    specifier: ^4.8.4
+    version: 4.8.4(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(chokidar@3.5.3)(dayjs@1.11.9)(tmp@0.2.1)
   mudom:
     specifier: ^1.0.10
     version: 1.0.10
@@ -324,21 +324,6 @@ packages:
 
   /chrome-a11y-caret-browsing-extension@1.0.2:
     resolution: {integrity: sha512-bGuhhXF0lrFKpaQW6Nk+1ifCkdoGGVPBtjvUAPJARA6DDtZ3BfBregNgAhgjV4Y03KRRZyXwXtoe4KH3mBtoSw==}
-    dev: false
-
-  /cnd@9.3.0(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(dayjs@1.11.9)(tmp@0.2.1):
-    resolution: {integrity: sha512-ATpPrhzCBNY52jPgcQOelm2kgMoE2VK+Gwz6hT2QKJZqCFQgfr5EJy3T2qWJfa0cOXAQpGx4JMyCTUZCXcKlXQ==}
-    hasBin: true
-    dependencies:
-      jsx-number-format: 0.1.5
-      nodexh: 2.2.0(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(dayjs@1.11.9)(tmp@0.2.1)
-    transitivePeerDependencies:
-      - acorn
-      - acorn-loose
-      - acorn-walk
-      - astring
-      - dayjs
-      - tmp
     dev: false
 
   /color-convert@1.9.3:
@@ -979,20 +964,6 @@ packages:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
     dev: false
 
-  /intertext-splitlines@1.2.1(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(dayjs@1.11.9)(tmp@0.2.1):
-    resolution: {integrity: sha512-bnIqoTOk8ie/jE3g4ec7h5ZdjpUNF+ynQ0/oTwn3I973vhCjMtnd9DCp/i1hxVMO55uqDgyYQ42f44Quzc6zXg==}
-    dependencies:
-      cnd: 9.3.0(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(dayjs@1.11.9)(tmp@0.2.1)
-      intertype: 7.6.5
-    transitivePeerDependencies:
-      - acorn
-      - acorn-loose
-      - acorn-walk
-      - astring
-      - dayjs
-      - tmp
-    dev: false
-
   /intertype-legacy@7.7.1:
     resolution: {integrity: sha512-Bj3k9bCu8vA6JLIvnCrJXOdkecgY5wtCmORclJ87uq22N53swREHT5bezSeK5TwcxgSJEDg2wEfcn4kNr9Qv8A==}
     dependencies:
@@ -1119,10 +1090,6 @@ packages:
       graceful-fs: 4.2.11
     dev: false
 
-  /jsx-number-format@0.1.5:
-    resolution: {integrity: sha512-eS1SvW5Lm+UQOrpxqtTF6NgPDupYlCV1GXJr+f/1yp+nwQH/4qW6XarwCcdphQjNHrJFC4ko2MgRyRDS/ypqZw==}
-    dev: false
-
   /kleur@3.0.3:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
     engines: {node: '>=6'}
@@ -1231,11 +1198,10 @@ packages:
     engines: {node: '>=16 || 14 >=14.17'}
     dev: false
 
-  /moonriver@4.8.3(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(chokidar@3.5.3)(dayjs@1.11.9)(tmp@0.2.1):
-    resolution: {integrity: sha512-sVLGlnvc6d+qp3bSLhdAswWj3rYwgfuqZY8ZIIgrB27Ub7xRkpH0x2OnsHvDtt4nmbpm5lA52yb8M5H4OQoRsw==}
+  /moonriver@4.8.4(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(chokidar@3.5.3)(dayjs@1.11.9)(tmp@0.2.1):
+    resolution: {integrity: sha512-2iQUiTZGtjU7Eh3sCJnlXUB9U/nRnQJnUV1qQZ3wrZJpT/8UJOE7m7vDyqVVhzXW1W0WNELdE0jH1P6SkJ6Edw==}
     dependencies:
       guy: 13.7.1(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(chokidar@3.5.3)(dayjs@1.11.9)(tmp@0.2.1)
-      intertext-splitlines: 1.2.1(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(dayjs@1.11.9)(tmp@0.2.1)
       intertype: 0.114.0(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(tmp@0.2.1)
       jfee: 0.1.5
     transitivePeerDependencies:
