@@ -11,6 +11,9 @@ dependencies:
   guy:
     specifier: ^13.7.1
     version: 13.7.1(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(chokidar@3.5.3)(dayjs@1.11.9)(tmp@0.2.1)
+  intersock:
+    specifier: ^0.0.1
+    version: link:../intersock
   intertype:
     specifier: ~0.119.1
     version: 0.119.1(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(tmp@0.2.1)
@@ -26,6 +29,9 @@ dependencies:
   nodexh:
     specifier: ^2.2.0
     version: 2.2.0(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(dayjs@1.11.9)(tmp@0.2.1)
+  webguy:
+    specifier: ^0.0.3
+    version: link:../webguy
   zx:
     specifier: ^7.2.2
     version: 7.2.2
