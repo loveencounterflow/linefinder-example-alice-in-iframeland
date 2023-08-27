@@ -21,8 +21,8 @@ dependencies:
     specifier: ^1.0.11
     version: link:../linefinder
   moonriver:
-    specifier: ^4.8.2
-    version: 4.8.2(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(dayjs@1.11.9)(tmp@0.2.1)
+    specifier: ^4.8.3
+    version: 4.8.3(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(chokidar@3.5.3)(dayjs@1.11.9)(tmp@0.2.1)
   mudom:
     specifier: ^1.0.10
     version: 1.0.10
@@ -856,26 +856,6 @@ packages:
       tmp: 0.2.1
     dev: false
 
-  /guy@13.5.0(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(dayjs@1.11.9)(tmp@0.2.1):
-    resolution: {integrity: sha512-GHHY/Ay1RvjQyFfv6giKc/MFGP8RiLYmBYFVHsjuRJ2EQj+RAZfWs1U7wAQF/Vnrdq83f+gEHbrDefnL9Eh+sg==}
-    peerDependencies:
-      acorn: ^8.7.1
-      acorn-loose: ^8.3.0
-      acorn-walk: ^8.2.0
-      astring: ^1.8.3
-      dayjs: ^1.11.7
-      tmp: ^0.2.1
-    dependencies:
-      acorn: 8.9.0
-      acorn-loose: 8.3.0
-      acorn-walk: 8.2.0
-      astring: 1.8.6
-      dayjs: 1.11.9
-      intertype-legacy: 7.7.1
-      letsfreezethat: 3.1.0
-      tmp: 0.2.1
-    dev: false
-
   /guy@13.7.1(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(chokidar@3.5.3)(dayjs@1.11.9)(tmp@0.2.1):
     resolution: {integrity: sha512-3bO5ZfOjRtII5KwEHzx7aZ4LH6Q2vFWHmDP4qnEMKQw18KBKQeLyygkTHDF1kQVqb3slOgIJSsmPIcNudx0gDQ==}
     peerDependencies:
@@ -1117,18 +1097,10 @@ packages:
       '@pkgjs/parseargs': 0.11.0
     dev: false
 
-  /jfee@0.1.4(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(dayjs@1.11.9)(tmp@0.2.1):
-    resolution: {integrity: sha512-XM3NLlcQGunAXg2c4Os28LWzLjbnrQE7NMwc4q38hgsAbTMIKu1IXceEz4sVXp55fU4Q0c+8+5OgMWxRgnpFNw==}
+  /jfee@0.1.5:
+    resolution: {integrity: sha512-v42H3sBFLTw2WDxLDe5Nsa/e9bcsZ8YBBuNtXQrbbOfRq+1qeL1bZiFuqIWkC+OPb+ZClB4XdCJO31/zwSrqxw==}
     dependencies:
-      cnd: 9.3.0(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(dayjs@1.11.9)(tmp@0.2.1)
       intertype: 7.6.5
-    transitivePeerDependencies:
-      - acorn
-      - acorn-loose
-      - acorn-walk
-      - astring
-      - dayjs
-      - tmp
     dev: false
 
   /js-tokens@4.0.0:
@@ -1259,18 +1231,19 @@ packages:
     engines: {node: '>=16 || 14 >=14.17'}
     dev: false
 
-  /moonriver@4.8.2(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(dayjs@1.11.9)(tmp@0.2.1):
-    resolution: {integrity: sha512-GBS49RHZfY+5wjMP1mJuBct8BqmNULC/yh2Nme4e9L6UGRd6tKh+9Kvkh9tQpWCdGy+jGuHljVpT3cWzCGbPVA==}
+  /moonriver@4.8.3(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(chokidar@3.5.3)(dayjs@1.11.9)(tmp@0.2.1):
+    resolution: {integrity: sha512-sVLGlnvc6d+qp3bSLhdAswWj3rYwgfuqZY8ZIIgrB27Ub7xRkpH0x2OnsHvDtt4nmbpm5lA52yb8M5H4OQoRsw==}
     dependencies:
-      guy: 13.5.0(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(dayjs@1.11.9)(tmp@0.2.1)
+      guy: 13.7.1(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(chokidar@3.5.3)(dayjs@1.11.9)(tmp@0.2.1)
       intertext-splitlines: 1.2.1(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(dayjs@1.11.9)(tmp@0.2.1)
       intertype: 0.114.0(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(tmp@0.2.1)
-      jfee: 0.1.4(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(dayjs@1.11.9)(tmp@0.2.1)
+      jfee: 0.1.5
     transitivePeerDependencies:
       - acorn
       - acorn-loose
       - acorn-walk
       - astring
+      - chokidar
       - dayjs
       - tmp
     dev: false
