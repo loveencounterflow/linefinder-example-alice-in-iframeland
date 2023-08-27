@@ -6,10 +6,4 @@ cd "$home"
 
 mkdir -p public/browserified
 # browserify -r combokeys --standalone Combokeys -o public/browserified/combokeys.js
-# browserify -r guy               --debug -o public/browserified/guy.js
-# browserify -r datom             --debug -o public/browserified/datom.js
-
-# browserify --require mudom      --debug                   -o public/browserified/mudom.js
-# browserify --require linefinder --debug -o public/browserified/linefinder.js
-browserify --require mudom --require linefinder --debug -o public/browserified/mudom+linefinder.js
-# browserify --require intertype --ignore 'node:tty' --ignore 'node:fs' --debug -o public/browserified/intertype.js
+browserify --require intersock --require mudom --require linefinder --debug -o public/browserified/mudom+linefinder.js
