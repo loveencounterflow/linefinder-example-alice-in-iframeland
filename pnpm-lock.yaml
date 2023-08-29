@@ -19,18 +19,18 @@ dependencies:
     version: 0.119.1(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(tmp@0.2.1)
   linefinder:
     specifier: ^1.0.11
-    version: link:../linefinder
+    version: 1.0.12(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(chokidar@3.5.3)(dayjs@1.11.9)(tmp@0.2.1)
   moonriver:
     specifier: ^4.8.4
     version: 4.8.4(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(chokidar@3.5.3)(dayjs@1.11.9)(tmp@0.2.1)
   mudom:
     specifier: ^1.0.10
-    version: 1.0.10
+    version: link:../mudom
   nodexh:
     specifier: ^2.2.1
     version: 2.2.1(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(chokidar@3.5.3)(dayjs@1.11.9)(tmp@0.2.1)
   webguy:
-    specifier: ^0.0.3
+    specifier: ^0.0.6
     version: link:../webguy
   zx:
     specifier: ^7.2.3
@@ -944,6 +944,10 @@ packages:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
     dev: false
 
+  /intersock@0.0.1:
+    resolution: {integrity: sha512-cyAd11XzSUVESHDb3A44AZLr2V8KTfyZ8FTNQg3d50qwlX2nqOKyHBDawT1kN9tw3rLGSYqq75JqQ8n1X8xOkA==}
+    dev: false
+
   /intertype-legacy@7.7.1:
     resolution: {integrity: sha512-Bj3k9bCu8vA6JLIvnCrJXOdkecgY5wtCmORclJ87uq22N53swREHT5bezSeK5TwcxgSJEDg2wEfcn4kNr9Qv8A==}
     dependencies:
@@ -1067,6 +1071,24 @@ packages:
 
   /letsfreezethat@3.1.0:
     resolution: {integrity: sha512-jJ1nvvQi6unW0WifjNPMIb64Byom0EXzSKWFYA++EpyjK3qv1J2pqeSoEJ61tGJoNG0GoNjPoeLYhxW16riZaA==}
+    dev: false
+
+  /linefinder@1.0.12(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(chokidar@3.5.3)(dayjs@1.11.9)(tmp@0.2.1):
+    resolution: {integrity: sha512-8QW6NdOrw4o0S/k9WoeHPoZSjjNaFnBHXY3b7nOoAcjoEBqpyXurmtXERpthnxLqK0UbB9YiMlWPtbNDN12GvQ==}
+    dependencies:
+      chrome-a11y-caret-browsing-extension: 1.0.2
+      guy: 13.7.1(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(chokidar@3.5.3)(dayjs@1.11.9)(tmp@0.2.1)
+      intersock: 0.0.1
+      intertype: 0.119.1(acorn-loose@8.3.0)(acorn-walk@8.2.0)(acorn@8.9.0)(astring@1.8.6)(tmp@0.2.1)
+      mudom: 1.0.10
+    transitivePeerDependencies:
+      - acorn
+      - acorn-loose
+      - acorn-walk
+      - astring
+      - chokidar
+      - dayjs
+      - tmp
     dev: false
 
   /load-source-map@3.0.1:
