@@ -174,8 +174,8 @@ demo = -> new Promise ( resolve, reject ) =>
   # debug '^2344^', server
   # debug '^2344^', server.httpServer # k for k in GUY.props.keys server, { hidden: true, }
   # debug '^2344^', k for k in GUY.props.keys server, { hidden: true, }
-  intersock   = new Intersock server.httpServer
-  debug '^2394789^', intersock
+  # intersock   = new Intersock server.httpServer
+  # debug '^2394789^', intersock
   # demo_websocket '127.0.0.1', 5500
   server.reloadBrowserWindow()
   return resolve()
