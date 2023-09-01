@@ -46,6 +46,6 @@
 <pl-frameholder><iframe src='./galley.html'></iframe></pl-frameholder>
 </pl-page>
 
-<script src='/browserified/mudom+linefinder.js'></script>
+<script src='/browserified/webguy+intersock+mudom+linefinder.js'></script>
 <script src='./ops2.js'></script>
 
