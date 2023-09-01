@@ -34,6 +34,8 @@ FS                        = require 'fs'
 { after
   defer
   sleep }                 = GUY.async
+_debounce                 = require 'debounce';
+debounce                  = ( dts, f ) -> _debounce f, dts * 1000, false
 file_dt                   = 0.2 # seconds to sleep between file actions
 { Intersock }             = require 'intersock'
 #...........................................................................................................
@@ -66,12 +68,15 @@ xxx =
 
   #---------------------------------------------------------------------------------------------------------
   $browserify_mudom_etc: ->
-    { $: zx } = await import( 'zx' )
+    { $: zx }       = await import( 'zx' )
+    run_browserify  = debounce debounce_dts, -> await zx"""bin/run-browserify"""
+    ### TAINT make debounce_dts configurable ###
+    debounce_dts    = 0.1
     return ( d ) =>
       return null unless /\/node_modules\/(linefinder|mudom|intersock|webguy)\/lib\//.test d.path
       ### TAINT rewrite by using functions that call `zx`, catch errors, wait ###
       try
-        await zx"""bin/run-browserify"""
+        await run_browserify()
       catch error
         message = error.message ? error
         warn '^$browserify_mudom_etc@345-3^', GUY.trm.reverse " #{message} "
