@@ -174,24 +174,12 @@ demo = -> new Promise ( resolve, reject ) =>
   # debug '^2344^', server
   # debug '^2344^', server.httpServer # k for k in GUY.props.keys server, { hidden: true, }
   # debug '^2344^', k for k in GUY.props.keys server, { hidden: true, }
-  # intersock   = new Intersock server.httpServer
+  intersock   = new Intersock()
   # debug '^2394789^', intersock
-  # demo_websocket '127.0.0.1', 5500
   server.reloadBrowserWindow()
   return resolve()
 
-demo_websocket = ( host, port ) =>
-  url     = "ws://#{host}:#{port}/ws"
-  WS      = require 'ws'
-  ws      = new WS.WebSocket url
-  urge "^demo_websocket@14^ opening websocket at #{url}"
-  ws.on 'open', () =>
-    urge "^demo_websocket@17^ websocket open at #{url}"
-    ws.send 'echo "helo from server"'
-  ws.on 'message', ( data ) =>
-    urge "^demo_websocket@17^ message", rpr data
-    return null
-  return null
+
 
 
 ############################################################################################################
