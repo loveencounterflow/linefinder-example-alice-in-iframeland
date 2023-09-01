@@ -170,7 +170,7 @@ demo = -> new Promise ( resolve, reject ) =>
     watcher.add_path PATH.resolve PATH.join G.project_path, 'node_modules/webguy/lib/*.js' ### TAINT should be included per intersock ###
   else
     help GUY.trm.reverse '^demo@345-1^', "running in prod mode"
-  server.start cfg
+  await server.start cfg
   # debug '^2344^', server
   # debug '^2344^', server.httpServer # k for k in GUY.props.keys server, { hidden: true, }
   # debug '^2344^', k for k in GUY.props.keys server, { hidden: true, }
