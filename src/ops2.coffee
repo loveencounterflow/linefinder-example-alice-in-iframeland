@@ -40,7 +40,7 @@ LINE                      = require 'linefinder'
   distributor = new LINE.Distributor cfg
   # await distributor.distribute_lines()
   ### TAINT to be done in `linefinder` ###
-  globalThis.ws = new ( require 'intersock' ).Intersock()
+  # globalThis.ws = new ( require 'intersock' ).Intersock()
   return null
 
 
